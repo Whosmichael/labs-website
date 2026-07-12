@@ -1,10 +1,18 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['700', '800'],
+  variable: '--font-display',
+})
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Synergy Labs - Enterprise AI Solutions',
+  description: 'Transform your business with cutting-edge AI and software engineering solutions from Synergy Labs.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -26,11 +34,11 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  colorScheme: 'dark',
+  themeColor: '#090909',
+  width: 'device-width',
+  initialScale: 1,
+  userScalable: true,
 }
 
 export default function RootLayout({
@@ -39,8 +47,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable} dark`}>
+      <body className="antialiased bg-background text-foreground">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
