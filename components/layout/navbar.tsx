@@ -44,7 +44,7 @@ export function Navbar() {
           whileHover={{ scale: 1.05 }}
         >
           <div className="w-8 h-8 rounded-lg gradient-accent" />
-          <span>Synergy Labs</span>
+          <span>Q4</span>
         </motion.div>
 
         {/* Desktop Nav */}

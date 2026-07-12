@@ -60,7 +60,7 @@ export function Hero() {
           variants={itemVariants}
           className="text-lg md:text-xl text-foreground/70 text-balance mb-8 max-w-2xl mx-auto leading-relaxed"
         >
-          Synergy Labs combines cutting-edge AI, software engineering, and strategic consulting to unlock unprecedented growth for enterprises worldwide.
+          Q4 Collective combines cutting-edge AI, software engineering, and strategic consulting to unlock unprecedented growth for enterprises worldwide.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -82,7 +82,7 @@ export function Hero() {
           variants={itemVariants}
           className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
         >
-          {[
+          {/* {[
             { value: '500+', label: 'Enterprises' },
             { value: '10B+', label: 'Transactions' },
             { value: '99.9%', label: 'Uptime' },
@@ -93,7 +93,7 @@ export function Hero() {
               </p>
               <p className="text-sm text-foreground/60">{stat.label}</p>
             </div>
-          ))}
+          ))} */}
         </motion.div>
       </motion.div>
     </section>

@@ -53,7 +53,7 @@ const engagementCards = [
 
 export function Contact() {
   return (
-    <section className="py-20 px-4 md:py-32">
+    <section id="contact" className="scroll-mt-20 py-20 px-4 md:py-32">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

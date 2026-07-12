@@ -75,7 +75,7 @@ const services = [
 
 export function Services() {
   return (
-    <section className="py-20 px-4">
+    <section id="services" className="scroll-mt-20 py-20 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

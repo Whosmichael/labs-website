@@ -53,7 +53,7 @@ const products = [
 
 export function Products() {
   return (
-    <section className="py-20 px-4 bg-muted/20">
+    <section id="products" className="scroll-mt-20 py-20 px-4 bg-muted/20">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

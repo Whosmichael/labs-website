@@ -80,7 +80,7 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section className="py-20 px-4 bg-muted/30">
+    <section id="pricing" className="scroll-mt-20 py-20 px-4 bg-muted/30">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div

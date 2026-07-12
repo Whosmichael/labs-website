@@ -46,7 +46,7 @@ export function Footer() {
           >
             <div className="flex items-center gap-2 mb-4">
               <div className="w-6 h-6 rounded-lg gradient-accent" />
-              <span className="font-bold font-display">Synergy Labs</span>
+              <span className="font-bold font-display">Q4 Collective</span>
             </div>
             <p className="text-sm text-foreground/60">
               Enterprise AI solutions for the modern world.
@@ -90,7 +90,7 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              &copy; 2024 Synergy Labs. All rights reserved.
+              &copy; 2026 Q4 Collective. All rights reserved.
             </motion.p>
 
             {/* Social Links */}
