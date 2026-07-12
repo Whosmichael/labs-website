@@ -2,57 +2,58 @@
 
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Mail, Phone, MapPin, Heart, Share2 } from 'lucide-react'
+import { Mail, MessageCircle, Calendar } from 'lucide-react'
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
       delayChildren: 0.2,
     },
   },
 }
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: 'easeOut' },
   },
 }
 
-const contactInfo = [
+const engagementCards = [
+  {
+    icon: MessageCircle,
+    title: 'Chat on WhatsApp',
+    description: 'Quick questions? Reach us instantly on WhatsApp for real-time support.',
+    buttonText: 'Start Chat',
+    href: 'https://wa.me/1234567890',
+    color: 'from-emerald-600 to-emerald-700',
+  },
   {
     icon: Mail,
-    label: 'Email',
-    value: 'hello@synergylabs.com',
-    link: 'mailto:hello@synergylabs.com',
+    title: 'Send an Email',
+    description: 'Share details about your project. We&apos;ll respond within 24 hours.',
+    buttonText: 'Email Us',
+    href: 'mailto:hello@synergylabs.com',
+    color: 'from-indigo-600 to-indigo-700',
   },
   {
-    icon: Phone,
-    label: 'Phone',
-    value: '+1 (555) 123-4567',
-    link: 'tel:+15551234567',
+    icon: Calendar,
+    title: 'Schedule a Call',
+    description: 'Book a meeting with our team directly. No back-and-forth emails.',
+    buttonText: 'Book Now',
+    href: 'https://cal.com/synergylabs',
+    color: 'from-violet-600 to-violet-700',
   },
-  {
-    icon: MapPin,
-    label: 'Address',
-    value: '123 Innovation Drive, San Francisco, CA',
-    link: '#',
-  },
-]
-
-const socialLinks = [
-  { icon: Heart, href: '#', label: 'Sponsor' },
-  { icon: Share2, href: '#', label: 'Share' },
 ]
 
 export function Contact() {
   return (
-    <section className="py-20 px-4">
+    <section className="py-20 px-4 md:py-32">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -62,107 +63,84 @@ export function Contact() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="heading-lg mb-4 font-display">Get In Touch</h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
-            Ready to transform your business? We&apos;d love to hear from you.
+          <h2 className="heading-lg mb-4 font-display text-balance">
+            Let&apos;s Get in Touch
+          </h2>
+          <p className="text-foreground/70 max-w-2xl mx-auto text-lg">
+            Choose your preferred way to connect. We&apos;re ready to discuss how we can transform your vision.
           </p>
         </motion.div>
 
+        {/* Engagement Cards Grid */}
         <motion.div
-          className="grid md:grid-cols-2 gap-12"
+          className="grid md:grid-cols-3 gap-6 lg:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
         >
-          {/* Contact Information */}
-          <motion.div variants={itemVariants} className="space-y-8">
-            <h3 className="text-2xl font-bold font-display mb-8">
-              Let&apos;s Connect
-            </h3>
+          {engagementCards.map((card) => {
+            const Icon = card.icon
+            return (
+              <motion.div
+                key={card.title}
+                variants={cardVariants}
+                className="group relative overflow-hidden rounded-2xl bg-muted/40 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-300 p-8 hover:shadow-2xl hover:shadow-indigo-500/10"
+              >
+                {/* Glassmorphic Glow Effect on Hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className={`absolute -inset-1/2 bg-gradient-to-r ${card.color} blur-3xl opacity-20 animate-pulse`} />
+                </div>
 
-            {/* Contact Info Items */}
-            {contactInfo.map((info) => {
-              const Icon = info.icon
-              return (
-                <a
-                  key={info.label}
-                  href={info.link}
-                  className="group flex items-start gap-4 p-4 rounded-lg hover:bg-muted/50 transition-colors duration-200"
-                >
-                  <div className="p-3 bg-accent/20 rounded-lg group-hover:bg-accent/30 transition-colors">
-                    <Icon className="w-6 h-6 text-accent" />
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Icon */}
+                  <div className={`inline-flex w-fit p-3 rounded-lg bg-gradient-to-br ${card.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
-                  <div>
-                    <p className="text-sm text-foreground/60">{info.label}</p>
-                    <p className="text-foreground font-medium group-hover:text-accent transition-colors">
-                      {info.value}
-                    </p>
-                  </div>
-                </a>
-              )
-            })}
 
-            {/* Social Links */}
-            <div className="pt-8 border-t border-border">
-              <p className="text-sm text-foreground/60 mb-4">Follow us</p>
-              <div className="flex gap-4">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon
-                  return (
-                    <motion.a
-                      key={social.label}
-                      href={social.href}
-                      className="p-3 bg-muted rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
+                  {/* Text Content */}
+                  <h3 className="text-xl font-bold font-display mb-3 group-hover:text-accent transition-colors">
+                    {card.title}
+                  </h3>
+                  <p className="text-foreground/70 text-sm leading-relaxed mb-8 flex-grow">
+                    {card.description}
+                  </p>
+
+                  {/* CTA Button */}
+                  <a href={card.href} target="_blank" rel="noopener noreferrer">
+                    <motion.button
+                      className="w-full py-3 px-4 rounded-lg gradient-accent text-white font-semibold text-sm transition-all duration-200 hover:scale-105 active:scale-95"
+                      whileHover={{ y: -2 }}
+                      whileTap={{ y: 0 }}
                     >
-                      <Icon className="w-5 h-5" />
-                    </motion.a>
-                  )
-                })}
-              </div>
-            </div>
-          </motion.div>
+                      {card.buttonText}
+                    </motion.button>
+                  </a>
+                </div>
 
-          {/* Contact Form */}
-          <motion.form
-            variants={itemVariants}
-            className="space-y-6 bg-muted/30 p-8 rounded-2xl border border-border"
-          >
-            <div>
-              <label className="block text-sm font-medium mb-2">Name</label>
-              <input
-                type="text"
-                className="w-full px-4 py-2 rounded-lg bg-muted border border-border focus:border-accent focus:outline-none transition-colors"
-                placeholder="Your name"
-              />
-            </div>
+                {/* Border Glow */}
+                <div className="absolute inset-0 rounded-2xl border border-indigo-500/0 group-hover:border-indigo-500/30 transition-colors duration-300 pointer-events-none" />
+              </motion.div>
+            )
+          })}
+        </motion.div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">Email</label>
-              <input
-                type="email"
-                className="w-full px-4 py-2 rounded-lg bg-muted border border-border focus:border-accent focus:outline-none transition-colors"
-                placeholder="your@email.com"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-2">Message</label>
-              <textarea
-                rows={4}
-                className="w-full px-4 py-2 rounded-lg bg-muted border border-border focus:border-accent focus:outline-none transition-colors resize-none"
-                placeholder="Tell us about your project..."
-              />
-            </div>
-
-            <Button className="w-full">Send Message</Button>
-
-            <p className="text-xs text-foreground/60 text-center">
-              We&apos;ll get back to you within 24 hours.
-            </p>
-          </motion.form>
+        {/* Footer CTA */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <p className="text-foreground/60 text-sm">
+            Not sure where to start?{' '}
+            <a href="#contact" className="text-accent hover:underline font-medium">
+              Pick any option above
+            </a>
+            {' '}and we&apos;ll guide you from there.
+          </p>
         </motion.div>
       </div>
     </section>
